@@ -1,6 +1,8 @@
 import openpyxl
 import csv
 import os
+from dateutil.parser import parse
+
 
 
 def convert_xlsx_to_csv(input_file_path):
@@ -17,4 +19,16 @@ def convert_xlsx_to_csv(input_file_path):
             writer.writerow([cell.value for cell in row])
 
 
+def read_csv_file(csv_file_path):
+    with open(csv_file_path, 'r') as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            try:
+                parse(row[1])  # Try to parse the 2nd column as a date
+                print(row)  # If successful, print the entire row
+            except ValueError:
+                pass  # If not successful, skip to the next row
+
+
 convert_xlsx_to_csv('input_sheets/SaoKeTK_01032025_11032025.xlsx')
+read_csv_file("input_sheets/SaoKeTK_01032025_11032025.csv")
