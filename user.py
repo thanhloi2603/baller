@@ -19,7 +19,8 @@ class Usermanager:
         self.users.append(user)
 
     def get_all_users(self):
-        return self.users
+        for user in self.users:
+            yield user
     
     def get_remission_users(self):
         return [user for user in self.users if user.remission]

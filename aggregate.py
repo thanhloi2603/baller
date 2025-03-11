@@ -12,7 +12,13 @@ def setup():
 
     tm_manager = TransactionManager()
     tm_manager.import_from_techcombank_csv_file(csv_file_path)
+    return um, tm_manager
 
 
 if __name__ == '__main__':
-    setup()
+    um, tm_manager = setup()
+    for transaction in tm_manager.get_income_transactions():
+        for user in um.get_all_users():
+            for cu in user.cues:
+                if cu and cu.lower() in transaction.description.lower():
+                    print(f'{user.name} - {transaction.description}')

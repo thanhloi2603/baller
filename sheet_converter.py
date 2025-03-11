@@ -35,6 +35,15 @@ class TransactionManager:
     def add_transaction(self, transaction: Transaction):
         self.transactions.append(transaction)
 
+    def get_all_transactions(self):
+        for transaction in self.transactions:
+            yield transaction
+    
+    def get_income_transactions(self):
+        for transaction in self.transactions:
+            if transaction.direction == "income":
+                yield transaction
+
     def import_from_techcombank_csv_file(self, csv_file_path):
         with open(csv_file_path, 'r') as csvfile:
             reader = csv.reader(csvfile)
