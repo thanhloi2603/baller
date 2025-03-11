@@ -28,10 +28,3 @@ class Usermanager:
             csv_reader = csv.reader(file, delimiter=',')
             for row in csv_reader:
                 self.add_user(User(row[0], row[1], row[2].strip() == 'y'))    
-
-
-um = Usermanager()
-um.import_from_file('users.csv')
-
-for user in um.get_remission_users():
-    print(user)
