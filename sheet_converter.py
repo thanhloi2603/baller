@@ -19,16 +19,43 @@ def convert_xlsx_to_csv(input_file_path):
             writer.writerow([cell.value for cell in row])
 
 
-def read_csv_file(csv_file_path):
+class Transaction:
+    def __init__(self, date, description, amount, direction):
+        self.date = date
+        self.description = description
+        self.amount = amount
+        self.direction = direction
+
+
+class TransactionManager:
+    def __init__(self):
+        self.transactions = []
+    
+    def add_transaction(self, transaction: Transaction):
+        self.transactions.append(transaction)
+
+
+tm_manager = TransactionManager()
+
+
+def import_techcombank_csv_file(csv_file_path):
     with open(csv_file_path, 'r') as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
             try:
                 parse(row[1])  # Try to parse the 2nd column as a date
-                print(row)  # If successful, print the entire row
+                _date = row[1]
+                _description = row[17]
+                if row[31]:
+                    _amount = row[31]
+                    _direction = "outcome"
+                else:
+                    _amount = row[37]
+                    _direction = "income"
+                tm_manager.add_transaction(Transaction(_date, _description, _amount, _direction))
             except ValueError:
                 pass  # If not successful, skip to the next row
 
 
 convert_xlsx_to_csv('input_sheets/SaoKeTK_01032025_11032025.xlsx')
-read_csv_file("input_sheets/SaoKeTK_01032025_11032025.csv")
+import_techcombank_csv_file("input_sheets/SaoKeTK_01032025_11032025.csv")
