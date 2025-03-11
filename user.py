@@ -23,13 +23,15 @@ class Usermanager:
     def get_remission_users(self):
         return [user for user in self.users if user.remission]
 
+    def import_from_file(self, csv_file_path):
+        with open(csv_file_path, mode='r', encoding='utf-8') as file:
+            csv_reader = csv.reader(file, delimiter=',')
+            for row in csv_reader:
+                self.add_user(User(row[0], row[1], row[2].strip() == 'y'))    
+
 
 um = Usermanager()
-
-with open('users.csv', mode='r', encoding='utf-8') as file:
-    csv_reader = csv.reader(file, delimiter=',')
-    for row in csv_reader:
-        um.add_user(User(row[0], row[1], row[2].strip() == 'y'))
+um.import_from_file('users.csv')
 
 for user in um.get_remission_users():
     print(user)
