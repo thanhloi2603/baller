@@ -4,7 +4,6 @@ import os
 from dateutil.parser import parse
 
 
-
 def convert_xlsx_to_csv(input_file_path):
     # Load the XLSX file
     wb = openpyxl.load_workbook(input_file_path)
@@ -30,32 +29,32 @@ class Transaction:
 class TransactionManager:
     def __init__(self):
         self.transactions = []
-    
+
     def add_transaction(self, transaction: Transaction):
         self.transactions.append(transaction)
 
-
-tm_manager = TransactionManager()
-
-
-def import_techcombank_csv_file(csv_file_path):
-    with open(csv_file_path, 'r') as csvfile:
-        reader = csv.reader(csvfile)
-        for row in reader:
-            try:
-                parse(row[1])  # Try to parse the 2nd column as a date
-                _date = row[1]
-                _description = row[17]
-                if row[31]:
-                    _amount = row[31]
-                    _direction = "outcome"
-                else:
-                    _amount = row[37]
-                    _direction = "income"
-                tm_manager.add_transaction(Transaction(_date, _description, _amount, _direction))
-            except ValueError:
-                pass  # If not successful, skip to the next row
+    def import_from_techcombank_csv_file(self, csv_file_path):
+        with open(csv_file_path, 'r') as csvfile:
+            reader = csv.reader(csvfile)
+            for row in reader:
+                try:
+                    parse(row[1])  # Try to parse the 2nd column as a date
+                    _date = row[1]
+                    _description = row[17]
+                    if row[31]:
+                        _amount = row[31]
+                        _direction = "outcome"
+                    else:
+                        _amount = row[37]
+                        _direction = "income"
+                    self.add_transaction(Transaction(_date, _description, _amount, _direction))
+                except ValueError:
+                    pass  # If not successful, skip to the next row
 
 
 convert_xlsx_to_csv('input_sheets/SaoKeTK_01032025_11032025.xlsx')
-import_techcombank_csv_file("input_sheets/SaoKeTK_01032025_11032025.csv")
+tm_manager = TransactionManager()
+tm_manager.import_from_techcombank_csv_file("input_sheets/SaoKeTK_01032025_11032025.csv")
+
+for transaction in tm_manager.transactions:
+    print(transaction.date, transaction.description, transaction.amount, transaction.direction)
