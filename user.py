@@ -15,6 +15,10 @@ class User:
     def __str__(self):
         return f'{self.id} - {self.name}, Remission: {self.remission}, Cues: {", ".join(self.cues)}'
 
+    @property
+    def amount(self):
+        return sum([transaction.amount for transaction in self.transactions])
+
 
 class Usermanager:
     def __init__(self):

@@ -20,8 +20,12 @@ if __name__ == '__main__':
     for transaction in tm_manager.get_income_transactions():
         if user := um.search_transaction_owner(transaction.description):
             user.own_transaction(transaction)
-            print(f'{user.name} - {transaction.description} - {transaction.amount}')
+            # print(f'{user.name} - {transaction.description} - {transaction.amount}')
 
     print("======== Transactions without owner ========")
     for transaction in tm_manager.get_income_transactions_without_owner():
         print(transaction)
+
+    print("======== Print users ========")
+    for user in um.get_all_users():
+        print(f'{user.name} - {user.amount}')
