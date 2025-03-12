@@ -30,7 +30,6 @@ if __name__ == '__main__':
     for user in um.get_all_users():
         print(f"{user.name} - {user.amount}")
         monthly_amounts = user.get_amount_by_month()
-        if monthly_amounts:
-            print(f"  Monthly amounts:")
-            for month, amount in monthly_amounts.items():
-                print(f"    {month}: {amount}")
+        print(f"  Monthly amounts:")
+        for month, amount in monthly_amounts.items():
+            print(f"    {month}: {amount}")
