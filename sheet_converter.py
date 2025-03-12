@@ -48,6 +48,11 @@ class TransactionManager:
             if transaction.direction == "income":
                 yield transaction
 
+    def get_income_transactions_without_owner(self):
+        for transaction in self.transactions:
+            if transaction.direction == "income" and transaction.owner is None:
+                yield transaction
+
     def import_from_techcombank_csv_file(self, csv_file_path):
         with open(csv_file_path, 'r') as csvfile:
             reader = csv.reader(csvfile)

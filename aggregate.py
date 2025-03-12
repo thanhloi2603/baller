@@ -18,8 +18,10 @@ def setup():
 if __name__ == '__main__':
     um, tm_manager = setup()
     for transaction in tm_manager.get_income_transactions():
-        for user in um.get_all_users():
-            for cu in user.cues:
-                if cu and cu.strip().lower() in transaction.description.lower():
-                    user.own_transaction(transaction)
-                    print(f'{user.name} - {transaction.description}')
+        if user := um.search_transaction_owner(transaction.description):
+            user.own_transaction(transaction)
+            print(f'{user.name} - {transaction.description}')
+
+    print("======== Transactions without owner ========")
+    for transaction in tm_manager.get_income_transactions_without_owner():
+        print(transaction)
