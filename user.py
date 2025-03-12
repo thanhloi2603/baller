@@ -6,6 +6,11 @@ class User:
         self.name = name.strip()
         self.remission = remission
         self.cues = cues
+        self.transactions = []
+    
+    def own_transaction(self, transaction):
+        self.transactions.append(transaction)
+        transaction.set_owner(self)
 
     def __str__(self):
         return f'{self.id} - {self.name}, Remission: {self.remission}, Cues: {", ".join(self.cues)}'

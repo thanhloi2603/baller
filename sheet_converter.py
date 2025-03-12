@@ -23,6 +23,10 @@ class Transaction:
         self.description = description
         self.amount = amount
         self.direction = direction
+        self.owner = None
+    
+    def set_owner(self, user):
+        self.owner = user
 
     def __str__(self):
         return f"{self.date}, {self.description}, {self.amount}, {self.direction}"

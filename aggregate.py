@@ -21,4 +21,5 @@ if __name__ == '__main__':
         for user in um.get_all_users():
             for cu in user.cues:
                 if cu and cu.strip().lower() in transaction.description.lower():
+                    user.own_transaction(transaction)
                     print(f'{user.name} - {transaction.description}')
