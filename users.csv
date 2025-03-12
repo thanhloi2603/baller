@@ -5,10 +5,10 @@ STT,	Họ và tên, Remission, Cues
 4,	Nguyễn Sỹ Vinh,,"sy vinh"
 5,	Vũ Tuấn Anh,,"tuan anh"
 6,	Hoàng Minh,,"hoang minh"
-7,	Đặng Thành Lợi,,"loi dong"
+7,	Đặng Thành Lợi,,"loi dong, Loi ck"
 8,	Lưu Thuy Thâm,,"thuy tham"
 9,	Trần Thế Vinh (Andy),,"andy, the vinh"
-10,	Đinh Anh Tài,,"anh tai"
+10,	Đinh Anh Tài,,"anh tai, ANH TA I"
 11,	Nguyễn Văn Hưng,,"van hung"
 12,	Trịnh Quang Hà,,"quang ha"
 13,	Hồ Long Trình,,"long trinh"
@@ -22,12 +22,12 @@ STT,	Họ và tên, Remission, Cues
 21,	Bùi Công Anh,,"cong anh"
 22,	Nguyễn Hoàng Minh Vũ,,"minh vu"
 23,	Huỳnh Minh Khải,,"minh khai"
-24,	Nguyễn Huy Cường,,"huy cuong"
+24,	Nguyễn Huy Cường,,"huy cuong, cuong ck"
 25,	Vũ Bá Việt,,"ba viet"
 26,	Lê Đức Thọ,,"duc tho"
 27,	Huy Ngo,,"huy ngo"
 28,	Michael Hoang Minh,,"michale"
-29,	Dương Khánh Duy,,
+29,	Dương Khánh Duy,,"Khanh Duy"
 30,	Phương Nam,y,
 31,	Nguyễn Sỹ Quang Minh,y,
 32,	Nguyễn Trung Nguyên,y,
@@ -35,3 +35,5 @@ STT,	Họ và tên, Remission, Cues
 34, BUI TUAN HUY,,"tuan huy"
 35, Tran Viet Hoang,,"viet hoang"
 36, TRAN HUU NGHI,,"HUU NGHI"
+37, NGO HOANG DUONG,,"HOANG DUONG"
+38, Van Duc,,"Van Duc"
