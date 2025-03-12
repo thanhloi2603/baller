@@ -28,8 +28,6 @@ if __name__ == '__main__':
 
     print("======== Print users ========")
     for user in um.get_all_users():
-        print(f"{user.name} - {user.amount}")
         monthly_amounts = user.get_amount_by_month()
-        print(f"  Monthly amounts:")
-        for month, amount in monthly_amounts.items():
-            print(f"    {month}: {amount}")
+        values = list(monthly_amounts.values())
+        print(f'{user.name},{",".join(map(str, values))}')
