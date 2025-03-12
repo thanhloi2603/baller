@@ -17,11 +17,20 @@ def convert_xlsx_to_csv(input_file_path, output_file_path):
             writer.writerow([cell.value for cell in row])
 
 
+def string_to_integer(s):
+  """Converts a string with commas to an integer."""
+  try:
+    # Remove commas and convert to integer
+    return int(s.replace(",", ""))
+  except ValueError:
+    return 0  # Handle cases where the string is not a valid number
+
+
 class Transaction:
     def __init__(self, date, description, amount, direction):
         self.date = date
         self.description = description
-        self.amount = amount
+        self.amount = string_to_integer(amount)
         self.direction = direction
         self.owner = None
     
