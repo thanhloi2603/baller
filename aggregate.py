@@ -20,5 +20,5 @@ if __name__ == '__main__':
     for transaction in tm_manager.get_income_transactions():
         for user in um.get_all_users():
             for cu in user.cues:
-                if cu and cu.lower() in transaction.description.lower():
+                if cu and cu.strip().lower() in transaction.description.lower():
                     print(f'{user.name} - {transaction.description}')
