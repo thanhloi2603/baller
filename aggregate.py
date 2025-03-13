@@ -26,8 +26,4 @@ if __name__ == '__main__':
     for transaction in tm_manager.get_income_transactions_without_owner():
         print(transaction)
 
-    print("======== Print users ========")
-    for user in um.get_all_users():
-        monthly_amounts = user.get_amount_by_month()
-        values = list(monthly_amounts.values())
-        print(f'{user.id},{user.name},{",".join(map(str, values))}')
+    um.export_incoming_csv('input_sheets/incomes.csv')

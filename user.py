@@ -50,7 +50,20 @@ class Usermanager:
     def get_all_users(self):
         for user in self.users:
             yield user
-    
+
+    def export_incoming_csv(self, csv_file_path: str):
+        fostered_rows = []
+        for user in self.get_all_users():
+            monthly_amounts = user.get_amount_by_month()
+            values = list(monthly_amounts.values())
+            _row_user = [user.id, user.name]
+            _row_user.extend(values)
+            fostered_rows.append(_row_user)
+
+        with open(csv_file_path, "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerows(fostered_rows)
+
     def get_remission_users(self):
         return [user for user in self.users if user.remission]
 
