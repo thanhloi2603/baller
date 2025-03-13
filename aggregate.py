@@ -30,4 +30,4 @@ if __name__ == '__main__':
     for user in um.get_all_users():
         monthly_amounts = user.get_amount_by_month()
         values = list(monthly_amounts.values())
-        print(f'{user.name},{",".join(map(str, values))}')
+        print(f'{user.id},{user.name},{",".join(map(str, values))}')
