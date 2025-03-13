@@ -26,4 +26,8 @@ if __name__ == '__main__':
     for transaction in tm_manager.get_income_transactions_without_owner():
         print(transaction)
 
+    print("======== Outcome transactions ========")
+    for transaction in tm_manager.get_outcome_transactions():
+        print(transaction)
+
     um.export_incoming_csv('input_sheets/incomes.csv')
