@@ -62,6 +62,10 @@ class TransactionManager:
             if transaction.direction == "outcome":
                 yield transaction
 
+    @property
+    def accumlated_outcome_amount(self):
+        return sum([transaction.amount for transaction in self.get_outcome_transactions()])
+
     def get_income_transactions_without_owner(self):
         for transaction in self.transactions:
             if transaction.direction == "income" and transaction.owner is None:

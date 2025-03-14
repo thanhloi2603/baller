@@ -29,5 +29,6 @@ if __name__ == '__main__':
     print("======== Outcome transactions ========")
     for transaction in tm_manager.get_outcome_transactions():
         print(transaction)
+    print(f">>> Total outcomes: {tm_manager.accumlated_outcome_amount}")
 
     um.export_incoming_csv('input_sheets/incomes.csv')
