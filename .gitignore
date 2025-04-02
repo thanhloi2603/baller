@@ -1,3 +1,4 @@
 input_sheets
 .vscode/
+.venv/
 __pycache__/
