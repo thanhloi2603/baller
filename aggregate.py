@@ -32,4 +32,4 @@ if __name__ == '__main__':
         print(transaction)
     print(f">>> Total outcomes: {tm_manager.accumlated_outcome_amount}")
 
-    um.export_incoming_csv('input_sheets/incomes.csv')
+    um.export_incoming_csv('outputs/incomes.csv')
