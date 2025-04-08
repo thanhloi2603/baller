@@ -26,7 +26,7 @@ class User:
         """Groups transactions by month and returns the total amount for each month."""
         monthly_amounts = {}
         for i in range(1, 13):
-            monthly_amounts[i] = ''
+            monthly_amounts[i] = 0
         for transaction in self.transactions:
             try:
                 transaction_date = datetime.datetime.strptime(transaction.date, "%d/%m/%Y")
@@ -36,7 +36,6 @@ class User:
                 except ValueError:
                     print(f"invalid format: {transaction.date}")
                     continue
-            monthly_amounts[transaction_date.month] = 0
             monthly_amounts[transaction_date.month] += transaction.amount
         return monthly_amounts
 
