@@ -62,6 +62,15 @@ class TransactionManager:
             if transaction.direction == "outcome":
                 yield transaction
 
+    def export_outcoming_csv(self, csv_file_path: str):
+        fostered_rows = []
+        for transaction in self.get_outcome_transactions():
+            fostered_rows.append([transaction.date, transaction.description, transaction.amount])
+
+        with open(csv_file_path, "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerows(fostered_rows)
+
     @property
     def accumlated_outcome_amount(self):
         return sum([transaction.amount for transaction in self.get_outcome_transactions()])

@@ -33,3 +33,4 @@ if __name__ == '__main__':
     print(f">>> Total outcomes: {tm_manager.accumlated_outcome_amount}")
 
     um.export_incoming_csv('outputs/incomes.csv')
+    tm_manager.export_outcoming_csv('outputs/outcomes.csv')
